@@ -9,7 +9,7 @@ export SERVER_PORT=80
 Before we can switch to port 80, we need to ensure that our AWS security group allows traffic on this port. First, we'll remove the rule that allows traffic on port 8080.
 
 ```bash
-aws ec2 r█████-security-group-ingress \
+aws ec2 revoke-security-group-ingress \
     --group-id $SG \
     --protocol tcp \
     --port 8080 \
@@ -56,7 +56,7 @@ echo The original instance ID is $ORIGINAL_INSTANCE_ID.
 Next, we'll terminate (delete) the original instance.
 
 ```bash
-aws ec2 █████████-instances --instance-ids $ORIGINAL_INSTANCE_ID
+aws ec2 terminate-instances --instance-ids $ORIGINAL_INSTANCE_ID
 ```
 
 Now, we're ready to launch a new instance using our updated startup script.
