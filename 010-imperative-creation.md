@@ -23,7 +23,7 @@ Next, we're going to manually deploy our Pokémon application. We start by creat
 ```bash
 cd
 mkdir pokemon-imperative
-cd pokemon-bash
+cd pokemon-imperative
 ```
 
 ```bash
