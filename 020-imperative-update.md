@@ -2,17 +2,39 @@
 
 In the next section of our tutorial, we will be addressing the need to alter the port our server is listening on. We have been using port 8080 up until now, but for our production environment, we want to switch to the default HTTP port, 80. This will allow users to access our application without specifying a port number in their browser.
 
+# Envoirment configuration
+
+```bash
+aws --version
+```
+
+```bash
+export AWS_DEFAULT_REGION=us-east-1
+```
+
+```bash
+export MYPREFIX=<your very unique prefix>
+```
+
+```bash
+cd
+mkdir pokemon-imperative
+cd pokemon-imperative
+```
+
+We define port 80.
+
 ```bash
 export SERVER_PORT=80
 ```
 
-Before we can switch to port 80, we need to ensure that our AWS security group allows traffic on this port. First, we'll remove the rule that allows traffic on port 8080.
+Before we can switch to port 80, we need to ensure that our AWS security group allows traffic on this port. First, we'll remove the rule that allows traffic on port 80.
 
 ```bash
 aws ec2 revoke-security-group-ingress \
     --group-id $SG \
     --protocol tcp \
-    --port 8080 \
+    --port 80 \
     --cidr 0.0.0.0/0
 ```
 
@@ -47,7 +69,7 @@ In order to apply these changes, we need to replace our current server instance.
 
 ```bash
 ORIGINAL_INSTANCE_ID=$(aws ec2 describe-instances \
-  --filters "Name=tag:Name,Values=pokemon-server" \
+  --filters "Name=tag:Name,Values=PokemonServer" \
   --query 'Reservations[*].Instances[*].InstanceId' \
   --output text)
 echo The original instance ID is $ORIGINAL_INSTANCE_ID.
