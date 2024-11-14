@@ -5,7 +5,7 @@ In our quest to provide a fun and interactive Pokémon experience, we're going t
 ## Environment configuration
 
 ```bash
-aws version
+aws --version
 ```
 
 ```bash
