@@ -47,7 +47,7 @@ In order to apply these changes, we need to replace our current server instance.
 
 ```bash
 ORIGINAL_INSTANCE_ID=$(aws ec2 describe-instances \
-  --filters "Name=tag:Name,Values=PokemonServer" \
+  --filters "Name=tag:Name,Values=pokemon-server" \
   --query 'Reservations[*].Instances[*].InstanceId' \
   --output text)
 echo The original instance ID is $ORIGINAL_INSTANCE_ID.
