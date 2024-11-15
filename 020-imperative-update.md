@@ -2,7 +2,7 @@
 
 In the next section of our tutorial, we will be addressing the need to alter the port our server is listening on. We have been using port 8080 up until now, but for our production environment, we want to switch to the default HTTP port, 80. This will allow users to access our application without specifying a port number in their browser.
 
-# Envoirment configuration
+# Environment configuration
 
 ```bash
 aws --version
