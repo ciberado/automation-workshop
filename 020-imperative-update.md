@@ -28,13 +28,13 @@ We define port 80.
 export SERVER_PORT=80
 ```
 
-Before we can switch to port 80, we need to ensure that our AWS security group allows traffic on this port. First, we'll remove the rule that allows traffic on port 80.
+Before we can switch to port 80, we need to ensure that our AWS security group allows traffic on this port. First, we'll remove the existing rule that allows traffic on port 8080.
 
 ```bash
 aws ec2 revoke-security-group-ingress \
     --group-id $SG \
     --protocol tcp \
-    --port 80 \
+    --port 8080 \
     --cidr 0.0.0.0/0
 ```
 
